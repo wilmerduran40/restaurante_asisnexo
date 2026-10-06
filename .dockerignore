@@ -1,0 +1,9 @@
+.git
+.github
+plans
+print-agent
+nexo-api
+.env
+*.md
+docker-compose.yml
+.gitignore

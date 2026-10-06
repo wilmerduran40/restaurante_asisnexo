@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AsisNexo Admin — Acceso</title>
+<link rel="icon" type="image/png" href="/admin/img/favicon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    orange: {
+                        50: '#FBF0F1', 100: '#F7E0E2', 200: '#F0C3C6', 300: '#E49A9E',
+                        400: '#D45E64', 500: '#BF0B1A', 600: '#A80917', 700: '#730710',
+                        800: '#5A060D', 900: '#400509'
+                    },
+                    gold: {
+                        50: '#FDF8E3', 100: '#FBF0C2', 200: '#F7E69B', 300: '#F2D335',
+                        400: '#E0BE2F', 500: '#C9A92A', 600: '#A69129', 700: '#88701F',
+                        800: '#6A5618', 900: '#4B3D11'
+                    },
+                    nexo: {
+                        50: '#FEF2F2', 100: '#FDE3E3', 200: '#FBC5C5', 300: '#F79B9B',
+                        400: '#EF5B5B', 500: '#E63946', 600: '#DC143C', 700: '#B30F2E',
+                        800: '#8C0B24', 900: '#6E091D'
+                    }
+                }
+            }
+        }
+    };
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(20, 7, 9, .92), rgba(10, 10, 12, .97)), url('/admin/img/logo.png') center 38% / min(70vw, 420px) auto no-repeat;
+    }
+    @media (max-width: 768px) {
+        body { background-attachment: scroll; }
+    }
+</style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex items-center justify-center p-4">
+
+<section class="w-full max-w-sm">
+    <div class="bg-white rounded-2xl shadow-2xl shadow-black/50 border-t-4 border-gold-300 p-8 ring-1 ring-black/5">
+        <div class="flex flex-col items-center mb-6">
+            <img src="/admin/img/favicon.png" alt="AsisNexo" class="w-20 h-20 object-contain">
+            <p class="text-sm font-semibold tracking-wide text-gray-600 mt-3">Panel de pedidos AsisNexo</p>
+        </div>
+        <label class="text-sm font-semibold text-gray-600">Usuario</label>
+        <input type="text" id="login-username" autocomplete="username"
+               class="w-full mt-1 mb-3 p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm">
+        <label class="text-sm font-semibold text-gray-600">Contraseña</label>
+        <input type="password" id="login-password" autocomplete="current-password"
+               class="w-full mt-1 mb-3 p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm">
+        <p id="login-error" class="hidden text-xs text-red-500 mb-2"></p>
+        <button id="login-btn" class="w-full bg-gradient-to-r from-nexo-600 to-nexo-500 hover:from-nexo-700 hover:to-nexo-600 text-white font-bold h-11 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-nexo-900/30">
+            <i class="fa-solid fa-right-to-bracket"></i> Entrar
+        </button>
+    </div>
+    <p class="text-center text-[11px] text-white/50 mt-4 font-semibold tracking-wide">Panel administrativo</p>
+</section>
+
+<script>
+'use strict';
+
+function toastError(msg) {
+    const el = document.getElementById('login-error');
+    el.textContent = msg;
+    el.classList.remove('hidden');
+}
+
+async function login() {
+    const user = document.getElementById('login-username').value;
+    const pw = document.getElementById('login-password').value;
+    const errP = document.getElementById('login-error');
+    errP.classList.add('hidden');
+    if (!user) { toastError('Ingresa tu usuario.'); return; }
+    if (!pw) { toastError('Ingresa la contraseña.'); return; }
+    const btn = document.getElementById('login-btn');
+    btn.disabled = true;
+    try {
+        const res = await fetch('/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: user, password: pw })
+        });
+        if (!res.ok) {
+            let data = null;
+            try { data = await res.json(); } catch (e) {}
+            throw new Error((data && data.error) || 'Error de servidor');
+        }
+        window.location.href = '/admin/panel';
+    } catch (e) {
+        toastError(e.message);
+        btn.disabled = false;
+    }
+}
+
+async function checkSession() {
+    try {
+        const res = await fetch('/api/admin/me');
+        if (res.ok) {
+            window.location.replace('/admin/panel');
+            return;
+        }
+    } catch (e) {}
+}
+
+document.getElementById('login-btn').addEventListener('click', login);
+document.getElementById('login-username').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+document.getElementById('login-password').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+
+checkSession();
+</script>
+</body>
+</html>

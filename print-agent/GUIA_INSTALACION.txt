@@ -1,0 +1,139 @@
+============================================================
+ AGENTE IMPRESOR ASISNEXO — GUIA DE INSTALACION
+ Desarrollado por AsisNexo — https://asisnexo.com
+ WhatsApp: +58 412 528 4595
+============================================================
+
+Esta guía te explica paso a paso cómo instalar y configurar el
+agente impresor en una computadora nueva del local.
+
+El agente es el programa que revisa los pedidos nuevos y los
+imprime en la ticketera térmica de red (IP:9100).
+
+------------------------------------------------------------
+1) REQUISITOS
+------------------------------------------------------------
+- Windows 10 u 11.
+- Node.js 18 o superior (gratis).
+- La impresora térmica conectada a la misma red (con cable o WiFi).
+- El dominio del sistema (ej: https://www.asisnexo.com).
+- El token del agente (lo tiene el administrador del sistema).
+
+------------------------------------------------------------
+2) INSTALAR NODE.JS (solo la primera vez)
+------------------------------------------------------------
+1. Abre el navegador y entra a:  https://nodejs.org
+2. Descarga la versión "LTS" (botón verde grande).
+3. Ejecuta el archivo descargado (node-vXX.x.x-x64.msi).
+4. Haz clic en "Next" (Siguiente) hasta el final, sin cambiar nada.
+5. Al terminar, pulsa "Finish".
+6. Para comprobar que quedó bien:
+   - Presiona la tecla Windows, escribe "PowerShell" y ábrelo.
+   - Escribe:  node --version
+   - Debe mostrar algo como:  v20.x.x  (con "v" y números).
+
+NOTA: si necesitas reiniciar la PC para que Node.js se active,
+cierra y vuelve a abrir la terminal (o reinicia).
+
+------------------------------------------------------------
+3) EJECUTAR EL SETUP (.exe)
+------------------------------------------------------------
+1. Copia el archivo nexo-agent-setup.exe a la PC (USB o descarga).
+2. Haz doble clic en él. Windows puede pedir confirmación:
+   haz clic en "Ejecutar" / "Sí".
+3. El setup extrae los archivos del agente y abre la ventana de
+   configuración automáticamente.
+4. En la ventana rellena (ya viene con valores precargados):
+   - Carpeta de instalación:  C:\nexo-agent  (puedes cambiarla)
+   - URL de la API (VPS):     el dominio del sistema
+   - Token del agente:        el token compartido
+   - IP de la impresora:      la IP de tu ticketera (ej: 192.168.0.100)
+   - Puerto:                  9100
+   - Ancho:                   58 u 80 (según tu ticketera)
+   - Marca "Iniciar automáticamente al iniciar sesión" si quieres
+     que arranque sola al encender la PC (recomendado).
+5. Haz clic en "Instalar".
+6. Al terminar, el setup abre esta guía y deja el agente funcionando.
+
+Si aparece un aviso de "Node.js NO está instalado": sigue el paso 2
+y vuelve a abrir el setup.
+
+------------------------------------------------------------
+4) VERIFICAR QUE FUNCIONA
+------------------------------------------------------------
+1. Entra al panel del sistema en el navegador (ej: tu-dominio/admin).
+2. Ve a la pestaña IMPRESORA.
+3. Pulsa el botón "Imprimir prueba".
+   Debe salir un ticket de prueba por la impresora.
+4. También puedes hacer un pedido de prueba; el ticket de cocina y
+   caja deben imprimirse automáticamente.
+
+------------------------------------------------------------
+5) AUTO-INICIO AL ENCENDER (si NO lo marcaste en el setup)
+------------------------------------------------------------
+Opción A — Carpeta de inicio (la más simple):
+1. Presiona Windows + R, escribe:  shell:startup  y Enter.
+2. Se abre una carpeta. Copia dentro un acceso directo a:
+   C:\nexo-agent\agente.bat
+   (clic derecho sobre agente.bat > Enviar a > Escritorio, y luego
+   mueve ese acceso directo a la carpeta de inicio).
+
+Opción B — Programador de tareas (inicia sin ventana):
+1. Abre PowerShell como administrador.
+2. Ejecuta:
+   schtasks /Create /TN "AsisNexo Print Agent" /TR "wscript.exe C:\nexo-agent\agente.vbs" /SC ONLOGON /RL LIMITED /F
+3. Para probar que arranca:
+   schtasks /Run /TN "AsisNexo Print Agent"
+
+------------------------------------------------------------
+6) CONFIGURAR A MANO (si no usas el setup)
+------------------------------------------------------------
+Abre C:\nexo-agent\agente.bat con el Bloc de notas. Debe verse así:
+
+   @echo off
+   cd /d %~dp0
+   set API_URL=https://www.asisnexo.com
+   set AGENT_TOKEN=TU_TOKEN_AQUI
+   set PRINTER_HOST=192.168.0.100
+   set PRINTER_PORT=9100
+   set PRINTER_WIDTH=80
+   set PRINTER_MODE=tcp
+   set LOG_FILE=agente.log
+   node agent.js
+
+Cambia los valores según corresponda:
+
+  API_URL         = dominio del sistema (obligatorio)
+  AGENT_TOKEN     = token compartido (obligatorio)
+  PRINTER_HOST    = IP de la impresora
+  PRINTER_PORT    = puerto (default 9100)
+  PRINTER_WIDTH   = 58 u 80 (ancho del papel)
+  PRINTER_MODE    = tcp (real) | mock (prueba sin impresora)
+
+Guarda el archivo. Para probar, haz doble clic en agente.bat.
+
+La impresora también se puede configurar desde el panel /admin
+(pestaña Impresora); esa configuración tiene prioridad.
+
+------------------------------------------------------------
+7) PROBLEMAS COMUNES
+------------------------------------------------------------
+- No imprime: revisa que la impresora esté encendida y con cable de
+  red a la MISMA red que la PC. Comprueba la IP.
+- "ECONNREFUSED" en el log: IP incorrecta o impresora apagada.
+- El texto sale cortado o raro: prueba PRINTER_WIDTH=80.
+- Revisa el log: abre C:\nexo-agent\agente.log para ver qué pasa.
+- Para detener el agente: cierra la ventana del agente.bat, o
+  schtasks /End /TN "AsisNexo Print Agent".
+
+------------------------------------------------------------
+8) DESINSTALAR
+------------------------------------------------------------
+1. schtasks /Delete /TN "AsisNexo Print Agent" /F   (si usas auto-inicio)
+2. Borra la carpeta C:\nexo-agent.
+
+------------------------------------------------------------
+ GRACIAS POR USAR ASISNEXO
+ Desarrollado por AsisNexo — https://asisnexo.com
+ Sistemas biométricos, control de asistencia y desarrollo web.
+============================================================

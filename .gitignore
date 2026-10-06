@@ -1,0 +1,14 @@
+# Entorno y secretos
+.env
+
+# Dependencias locales (si se instalan para el optimizador de imágenes)
+node_modules/
+
+# Subidas e impresiones del agente
+nexo-api/uploads/
+print-agent/tickets/
+
+# Sistema
+Thumbs.db
+.DS_Store
+*.log

@@ -1,0 +1,70 @@
+[
+    {
+        "name":  "agua_600ml",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/agua-600ml-1784351787725.webp"
+    },
+    {
+        "name":  "americana",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/americana-1784347861010.jpeg"
+    },
+    {
+        "name":  "bombita",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/bombita--1784351674819.webp"
+    },
+    {
+        "name":  "cheese",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/cheese-1784349077884.jpeg"
+    },
+    {
+        "name":  "chicken_little",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/chicken-little-1784351143763.jpeg"
+    },
+    {
+        "name":  "cuarto_de_libra",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/cuarto-de-libra-1784348039667.jpeg"
+    },
+    {
+        "name":  "duo",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/duo-1784351158319.jpeg"
+    },
+    {
+        "name":  "burger_especial",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/kikijam-1784346659144.jpeg"
+    },
+    {
+        "name":  "combo_alitas",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/kikipack-1784351208315.jpeg"
+    },
+    {
+        "name":  "burger_crispy",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/la-kiki-1784349799969.jpeg"
+    },
+    {
+        "name":  "refresco_de_1l",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/refresco-de-1l-1784351334784.webp"
+    },
+    {
+        "name":  "refresco_de_1_5l",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/refresco-de-1-5l-1784351482623.webp"
+    },
+    {
+        "name":  "refresco_de_2l",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/refresco-de-2l-1784351516729.jpeg"
+    },
+    {
+        "name":  "refresco_lata",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/refresco-lata--1784351556234.png"
+    },
+    {
+        "name":  "smash",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/smash-1784348494959.jpeg"
+    },
+    {
+        "name":  "tripack",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/tripack-1784351180270.jpeg"
+    },
+    {
+        "name":  "yucky_pack",
+        "url":  "https://storage.googleapis.com/pidefacil-bucket/yucky-pack--1784351745076.webp"
+    }
+]

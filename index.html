@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AsisNexo en Socopó, Barinas. Alitas que vuelan, burgers que te transportan. Pide por WhatsApp con delivery y retiro en local.">
+    <meta name="theme-color" content="#DC143C">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AsisNexo">
+    <meta property="og:url" content="https://TU-DOMINIO.com/">
+    <meta property="og:locale" content="es_VE">
+    <meta property="og:title" content="AsisNexo - Alitas que vuelan, Burgers que te transportan">
+    <meta property="og:description" content="Alitas bañadas en sabores artesanales y burgers con carne premium en Socopó. Arma tu pedido y recíbelo por WhatsApp.">
+    <meta property="og:image" content="https://TU-DOMINIO.com/img/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AsisNexo - Alitas que vuelan, Burgers que te transportan">
+    <meta name="twitter:description" content="Alitas bañadas en sabores artesanales y burgers con carne premium en Socopó. Arma tu pedido y recíbelo por WhatsApp.">
+    <meta name="twitter:image" content="https://TU-DOMINIO.com/img/hero.jpg">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <title>AsisNexo - Alitas que vuelan, Burgers que te transportan</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FastFoodRestaurant",
+        "name": "AsisNexo",
+        "image": "https://TU-DOMINIO.com/img/hero.jpg",
+        "url": "https://TU-DOMINIO.com/",
+        "telephone": "+58-412-5284595",
+        "servesCuisine": "Alitas, Hamburguesas, Comida Rápida",
+        "priceRange": "$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Socopó",
+            "addressRegion": "Barinas",
+            "addressCountry": "VE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 8.2360504,
+            "longitude": -70.8192259
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "17:00",
+            "closes": "23:30"
+        }],
+        "sameAs": [
+            "https://www.instagram.com/asisnexo/"
+        ],
+        "hasMenu": "https://TU-DOMINIO.com/menu.html"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexo: {
+                            50: '#2B0A10',
+                            100: '#46121C',
+                            200: '#701B2C',
+                            300: '#9E2440',
+                            400: '#C83053',
+                            500: '#E63946',
+                            600: '#DC143C',
+                            700: '#B01030',
+                            800: '#8C0D26',
+                            900: '#5E081A'
+                        },
+                        dark: '#0A0A0C',
+                        surface: '#141419',
+                        surface2: '#1A1A20'
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="navbar">
+        <div class="container-nexo">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="img/logo.png" alt="AsisNexo" class="h-14 w-auto object-contain drop-shadow-[0_0_12px_rgba(220,20,60,0.35)]">
+                    <span class="font-display text-2xl text-white tracking-wide">AsisNexo <span class="text-nexo-600">Fast Food</span></span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="menu.html" class="nav-link">Menú</a>
+                    <a href="#especialidades" class="nav-link">Especialidades</a>
+                    <a href="#galeria" class="nav-link">Galería</a>
+                    <a href="#ubicacion" class="nav-link">Ubicación</a>
+                    <a href="menu.html" class="btn btn-primary text-sm px-6 py-3">
+                        <i class="fa-solid fa-cart-shopping"></i> Ordenar
+                    </a>
+                </nav>
+
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-nexo-400 focus:outline-none p-2" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-white/10">
+            <div class="px-4 py-3 flex flex-col gap-1">
+                <a href="menu.html" class="block px-3 py-3 font-ui text-gray-300 hover:text-nexo-400 hover:bg-nexo-900/40 rounded-md">Menú</a>
+                <a href="#especialidades" class="block px-3 py-3 font-ui text-gray-300 hover:text-nexo-400 hover:bg-nexo-900/40 rounded-md">Especialidades</a>
+                <a href="#galeria" class="block px-3 py-3 font-ui text-gray-300 hover:text-nexo-400 hover:bg-nexo-900/40 rounded-md">Galería</a>
+                <a href="#ubicacion" class="block px-3 py-3 font-ui text-gray-300 hover:text-nexo-400 hover:bg-nexo-900/40 rounded-md">Ubicación</a>
+                <div class="mt-3">
+                    <a href="menu.html" class="btn btn-primary w-full">
+                        <i class="fa-solid fa-cart-shopping"></i> Ordenar ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero-bg min-h-[100svh] flex items-center pt-20 relative overflow-hidden">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+               poster="img/hero.jpg" aria-hidden="true">
+            <source src="img/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-dark to-transparent z-[2]"></div>
+        <div class="container-nexo text-left z-10">
+            <div class="max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+                <p class="eyebrow text-sm sm:text-lg mb-6 fade-in-up">
+                    Alitas <span class="text-white">❉</span> Burgers <span class="text-white">❉</span> Socopó
+                </p>
+                <h1 class="hero-title mb-10 fade-in-up delay-100">
+                    Alitas que vuelan,<br class="hidden sm:block"> Burgers que te transportan
+                </h1>
+                <a href="menu.html" class="btn btn-primary text-lg px-10 py-5 fade-in-up delay-200">
+                    <i class="fa-solid fa-cart-shopping"></i> Ordenar ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ESPECIALIDADES ================= -->
+    <section id="especialidades" class="py-20 md:py-28 bg-dark">
+        <div class="container-nexo">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="eyebrow block mb-4">Los Favoritos</span>
+                <h2 class="section-title text-4xl md:text-6xl">Nuestras Estrellas</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <a href="menu.html#alitas-chicken-little" class="spec-card reveal block group">
+                    <div class="rounded-lg overflow-hidden aspect-square border border-white/10 bg-surface">
+                        <img src="img/chicken_little.jpeg" alt="Chicken Little" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-ui text-center mt-4 text-white font-semibold tracking-wide">Chicken Little</p>
+                    <p class="text-center text-nexo-500 text-xs sm:text-sm">Alitas · 7 piezas</p>
+                </a>
+
+                <a href="menu.html#burger-smash" class="spec-card reveal block group" style="transition-delay:100ms">
+                    <div class="rounded-lg overflow-hidden aspect-square border border-white/10 bg-surface">
+                        <img src="img/smash.jpeg" alt="Smash" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-ui text-center mt-4 text-white font-semibold tracking-wide">Smash</p>
+                    <p class="text-center text-nexo-500 text-xs sm:text-sm">Burgers · Carne premium</p>
+                </a>
+
+                <a href="menu.html#alitas-combo" class="spec-card reveal block group" style="transition-delay:200ms">
+                    <div class="rounded-lg overflow-hidden aspect-square border border-white/10 bg-surface">
+                        <img src="img/combo_alitas.jpeg" alt="Combo Alitas" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-ui text-center mt-4 text-white font-semibold tracking-wide">Combo Alitas</p>
+                    <p class="text-center text-nexo-500 text-xs sm:text-sm">Alitas · Para compartir</p>
+                </a>
+
+                <a href="menu.html#burger-crispy" class="spec-card reveal block group" style="transition-delay:300ms">
+                    <div class="rounded-lg overflow-hidden aspect-square border border-white/10 bg-surface">
+                        <img src="img/burger_crispy.jpeg" alt="Burger Crispy" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-ui text-center mt-4 text-white font-semibold tracking-wide">Burger Crispy</p>
+                    <p class="text-center text-nexo-500 text-xs sm:text-sm">Burgers · Pollo crispy</p>
+                </a>
+            </div>
+
+            <div class="mt-12 md:mt-16 text-center reveal">
+                <a href="menu.html" class="btn btn-outline">
+                    Ver menú completo <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GALERÍA ================= -->
+    <section id="galeria" class="py-20 md:py-28 bg-surface/40">
+        <div class="container-nexo">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="eyebrow block mb-4">Galería</span>
+                <h2 class="section-title text-4xl md:text-6xl">El Sabor en Imágenes</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                <button type="button" class="gallery-item reveal aspect-[4/5]" data-full="img/americana.jpeg" aria-label="Ver Americana">
+                    <img src="img/americana.jpeg" alt="Americana" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'">
+                    <span class="gallery-caption">Americana</span>
+                </button>
+                <button type="button" class="gallery-item reveal aspect-[4/5]" data-full="img/duo.jpeg" aria-label="Ver Dúo" style="transition-delay:100ms">
+                    <img src="img/duo.jpeg" alt="Dúo" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'">
+                    <span class="gallery-caption">Dúo</span>
+                </button>
+                <button type="button" class="gallery-item reveal aspect-[4/5]" data-full="img/tripack.jpeg" aria-label="Ver Tripack" style="transition-delay:200ms">
+                    <img src="img/tripack.jpeg" alt="Tripack" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'">
+                    <span class="gallery-caption">Tripack</span>
+                </button>
+                <button type="button" class="gallery-item reveal aspect-[4/5]" data-full="img/burger_especial.jpeg" aria-label="Ver Burger Especial" style="transition-delay:300ms">
+                    <img src="img/burger_especial.jpeg" alt="Burger Especial" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder.svg'">
+                    <span class="gallery-caption">Burger Especial</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <section class="bg-nexo-600 py-6 border-y border-white/10 overflow-hidden marquee-mask" aria-hidden="true">
+        <div class="marquee">
+            <div class="marquee-group font-display text-white" style="font-size:clamp(2rem,5vw,4rem)">
+                <span class="px-6">Alitas</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Burgers</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Delivery</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Socopó</span><span class="px-4 text-white/70">❉</span>
+            </div>
+            <div class="marquee-group font-display text-white" style="font-size:clamp(2rem,5vw,4rem)">
+                <span class="px-6">Alitas</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Burgers</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Delivery</span><span class="px-4 text-white/70">❉</span>
+                <span class="px-6">Socopó</span><span class="px-4 text-white/70">❉</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= UBICACIÓN ================= -->
+    <section id="ubicacion" class="py-20 md:py-28 bg-dark">
+        <div class="container-nexo">
+            <div class="bg-surface rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col lg:flex-row reveal">
+                <div class="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center">
+                    <span class="eyebrow block mb-4">Encuéntranos</span>
+                    <h2 class="section-title text-4xl md:text-5xl mb-8">Visita nuestro local</h2>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-nexo-900/50 p-3 rounded-full text-nexo-400 mt-1">
+                                <i class="fa-solid fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-ui text-white text-lg">Horario de atención</h4>
+                                <p class="text-gray-400">De lunes a lunes<br>5:00 PM - 11:30 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-nexo-900/50 p-3 rounded-full text-nexo-400 mt-1">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-ui text-white text-lg">Dirección</h4>
+                                <p class="text-gray-400">Socopó, Barinas, Venezuela.<br><span class="text-sm text-nexo-400">(Dirección exacta próximamente)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-nexo-900/50 p-3 rounded-full text-green-500 mt-1">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-ui text-white text-lg">Contacto / Delivery</h4>
+                                <p class="text-gray-400"><a href="tel:+584125284595" class="hover:text-nexo-400 transition-colors">+58 412-5284595</a></p>
+                                <div class="flex flex-wrap gap-x-5 gap-y-1 mt-1">
+                                    <a href="https://wa.me/584125284595" target="_blank" rel="noopener" class="text-green-500 font-semibold hover:underline text-sm inline-block">Escribir por WhatsApp</a>
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=8.2360504,-70.8192259" target="_blank" rel="noopener" class="text-nexo-400 font-semibold hover:underline text-sm inline-block">
+                                        <i class="fa-solid fa-diamond-turn-right mr-1"></i>Cómo llegar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 h-80 lg:h-auto relative bg-surface2">
+                    <iframe src="https://www.google.com/maps?q=8.2360504,-70.8192259&z=15&output=embed" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Ubicación de AsisNexo"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= RESEÑAS ================= -->
+    <section class="py-20 md:py-28 bg-surface/40">
+        <div class="container-nexo text-center">
+            <div class="max-w-2xl mx-auto reveal">
+                <span class="eyebrow block mb-4">
+                    <i class="fa-brands fa-google mr-2"></i>Tu opinión cuenta
+                </span>
+                <h2 class="section-title text-4xl md:text-5xl mb-6">¿Ya viviste la experiencia AsisNexo?</h2>
+                <div class="flex items-center justify-center gap-1 mb-3 text-amber-400 text-2xl" aria-label="5 estrellas">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-400 mb-8">Tu opinión nos ayuda a mejorar y a que más gente en Socopó nos encuentre. Déjanos tu reseña y ayúdanos a seguir creciendo.</p>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJAAAAAAAAAAARdoaDwRwZwpw" target="_blank" rel="noopener" class="btn btn-primary text-lg px-8 py-4">
+                    <i class="fa-brands fa-google"></i> Dejar mi reseña en Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-black py-16 border-t border-white/10 text-gray-500">
+        <div class="container-nexo">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4 text-white">
+                        <img src="img/logo.png" alt="AsisNexo" class="h-12 w-auto object-contain">
+                        <span class="font-display text-2xl tracking-wide">AsisNexo</span>
+                    </div>
+                    <p class="text-sm mb-4 max-w-sm">Alitas que vuelan, burgers que te transportan. Preparadas con ingredientes frescos y mucho sabor.</p>
+                    <a href="menu.html" class="text-nexo-soft font-ui text-sm hover:text-white transition-colors">Ver el menú →</a>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://www.instagram.com/asisnexo/" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 bg-surface rounded-full flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/584125284595" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 bg-surface rounded-full flex items-center justify-center text-white hover:bg-green-500 transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        </a>
+                        <a href="mailto:asisnexo@gmail.com" aria-label="Correo" class="w-10 h-10 bg-surface rounded-full flex items-center justify-center text-white hover:bg-nexo-600 transition-all transform hover:scale-110">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-xl text-nexo-soft mb-5">Encuéntranos</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><i class="fa-solid fa-location-dot text-nexo-400 mr-2"></i>Socopó, Barinas</li>
+                        <li><i class="fa-solid fa-clock text-nexo-400 mr-2"></i>Lun a Dom · 5:00 PM - 11:30 PM</li>
+                        <li><a href="tel:+584125284595" class="hover:text-nexo-400 transition-colors"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i>+58 412-5284595</a></li>
+                        <li><a href="https://www.google.com/maps/dir/?api=1&destination=8.2360504,-70.8192259" target="_blank" rel="noopener" class="hover:text-nexo-400 transition-colors"><i class="fa-solid fa-diamond-turn-right text-nexo-400 mr-2"></i>Cómo llegar</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-xl text-nexo-soft mb-5">Navega</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="menu.html" class="hover:text-nexo-400 transition-colors">Menú de Pedidos</a></li>
+                        <li><a href="#especialidades" class="hover:text-nexo-400 transition-colors">Especialidades</a></li>
+                        <li><a href="#galeria" class="hover:text-nexo-400 transition-colors">Galería</a></li>
+                        <li><a href="https://search.google.com/local/writereview?placeid=0x8e64e9000c0ed2bf:0x9cc2191cc1838676" target="_blank" rel="noopener" class="hover:text-nexo-400 transition-colors inline-flex items-center gap-2">
+                            <i class="fa-brands fa-google"></i> Deja tu reseña
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; <span id="current-year">2026</span> AsisNexo. Todos los derechos reservados.</p>
+                <p class="mt-2 md:mt-0">Socopó, Barinas - Venezuela.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+        <img src="" alt="Imagen ampliada" id="lightbox-img">
+    </div>
+
+    <script>
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const icon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const open = !mobileMenu.classList.contains('hidden');
+            icon.classList.toggle('fa-xmark', open);
+            icon.classList.toggle('fa-bars', !open);
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Sombra del header al hacer scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => revealObserver.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('reveal-visible'));
+        }
+
+        // Lightbox de la galería
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.gallery-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                lightboxImg.src = btn.dataset.full;
+                lightbox.classList.add('open');
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

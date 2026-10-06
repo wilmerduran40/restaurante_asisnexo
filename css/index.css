@@ -1,0 +1,369 @@
+/* ================================================================
+   AsisNexo — diseño basado en Ma'ono (paleta AsisNexo)
+   Sistema de tokens + componentes
+   ================================================================ */
+
+:root {
+    /* Colores AsisNexo (reemplazan los 5 tokens de Ma'ono) */
+    --nexo-ink: #0A0A0C;          /* fondo base            */
+    --nexo-surface: #141419;      /* secciones alternas    */
+    --nexo-surface-2: #1A1A20;    /* superficie elevada    */
+    --nexo-primary: #DC143C;      /* botones / bandas      */
+    --nexo-primary-700: #B01030;
+    --nexo-soft: #E63946;         /* eyebrow / subtítulos  */
+    --nexo-text: #E5E7EB;
+    --nexo-muted: #9CA3AF;
+    --line: rgba(255, 255, 255, .10);
+
+    /* Formas */
+    --radius-card: 8px;
+    --radius-gallery: 12px;
+    --radius-btn: 12px;
+
+    /* Layout */
+    --max-width: 1600px;
+    --gutter: 3vw;
+
+    /* Tipografía */
+    --font-display: 'Anton', Impact, sans-serif;
+    --font-ui: 'Oswald', sans-serif;
+    --font-body: 'Varela Round', system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--nexo-ink);
+    color: var(--nexo-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container-nexo {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
+
+/* ---------- Tipografía ---------- */
+.font-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: .01em;
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.font-ui {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 500;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.05;
+    color: #fff;
+}
+
+.eyebrow {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-weight: 500;
+    color: var(--nexo-soft);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    line-height: 1;
+    border-radius: var(--radius-btn);
+    padding: 1.05rem 1.7rem;
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+.btn-primary {
+    background-color: var(--nexo-primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--nexo-primary-700);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(220, 20, 60, .35);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, .25);
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .5);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: var(--nexo-ink);
+    transition: box-shadow .3s ease;
+}
+
+.site-header.scrolled {
+    box-shadow: 0 10px 34px rgba(0, 0, 0, .55);
+}
+
+.nav-link {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+    font-size: .95rem;
+    color: var(--nexo-muted);
+    transition: color .2s ease;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero-bg {
+    background-image: url('../img/hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg,
+            rgba(10, 10, 12, .94) 0%,
+            rgba(10, 10, 12, .72) 45%,
+            rgba(10, 10, 12, .2) 100%);
+}
+
+@media (max-width: 768px) {
+    .hero-overlay {
+        background: linear-gradient(180deg,
+                rgba(10, 10, 12, .85) 0%,
+                rgba(10, 10, 12, .55) 60%,
+                rgba(10, 10, 12, .3) 100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.02;
+    color: #fff;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+/* ---------- Tarjetas de especialidades ---------- */
+.spec-card img {
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.spec-card:hover img {
+    transform: scale(1.06);
+}
+
+/* ---------- Galería ---------- */
+.gallery-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-gallery);
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--nexo-surface);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-item .gallery-caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent 55%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #fff;
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, .92);
+    cursor: zoom-out;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: min(1100px, 94vw);
+    max-height: 88vh;
+    border-radius: var(--radius-gallery);
+}
+
+/* ---------- Marquee ---------- */
+.marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    white-space: nowrap;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp .8s ease-out forwards;
+}
+
+.delay-100 { animation-delay: .1s; }
+.delay-200 { animation-delay: .2s; }
+.delay-300 { animation-delay: .3s; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(.97);
+    transition: opacity .55s cubic-bezier(.22, 1, .36, 1),
+                transform .55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--nexo-ink);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--nexo-primary);
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--nexo-soft);
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-up,
+    .reveal {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1;
+        transform: none;
+    }
+
+    .marquee {
+        animation: none !important;
+    }
+}

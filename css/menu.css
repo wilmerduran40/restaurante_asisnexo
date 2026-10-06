@@ -1,0 +1,189 @@
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-display {
+    font-family: 'Sora', 'Inter', system-ui, sans-serif;
+}
+
+/* Tema oscuro: remapea las superficies blancas que genera el JS
+   (tarjetas, modal, carrito, checkout) a la superficie oscura. */
+.bg-white {
+    background-color: #141419 !important;
+}
+
+/* Mantener el punto interior del radio blanco sobre el estado checked crimson */
+.custom-radio:checked + div div {
+    background-color: #fff !important;
+}
+
+/* Ocultar barra de scroll en contenedores horizontales pero permitir scroll */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animaciones para el carrito y modales */
+@keyframes slideInUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-up { animation: slideInUp 0.3s ease-out forwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in { animation: fadeIn 0.2s ease-out forwards; }
+
+/* Pop escalonado de las tarjetas del menú al hacer scroll */
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(28px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reveal-card {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    will-change: opacity, transform;
+}
+
+.reveal-card.reveal-visible {
+    animation: popIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Rebote del ícono del carrito al agregar */
+@keyframes cartBounce {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.25) rotate(-8deg); }
+    50%  { transform: scale(0.95) rotate(6deg); }
+    75%  { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+.animate-cart-bounce {
+    animation: cartBounce 0.5s ease-in-out;
+}
+
+/* Pop elástico del badge del carrito */
+@keyframes badgePop {
+    0%   { transform: scale(0); }
+    60%  { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+.animate-badge-pop {
+    animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Entrada del toast */
+@keyframes toastIn {
+    from {
+        transform: translate(-50%, -20px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+}
+
+.toast-in {
+    animation: toastIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Spinner para el botón de envío */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Estado de carga del botón Enviar Pedido */
+#send-whatsapp-btn.loading {
+    opacity: 1;
+    cursor: progress;
+}
+
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+/* Estilo para los checkboxes personalizados */
+.custom-checkbox:checked + div {
+    background-color: #DC143C;
+    border-color: #DC143C;
+}
+
+.custom-checkbox:checked + div svg {
+    display: block;
+}
+
+/* Estilo para los radios de tamaño/sabor */
+.custom-radio:checked + div {
+    background-color: #DC143C;
+    border-color: #B01030;
+}
+
+.custom-radio:checked + div div {
+    display: block;
+}
+
+/* Entrada del modal de upsell de bebidas */
+@keyframes upsellPop {
+    from { transform: scale(0.92); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.upsell-pop {
+    animation: upsellPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Bebida ya agregada al pedido desde el modal de upsell */
+.upsell-added {
+    border-color: #E63946;
+    box-shadow: 0 0 0 2px #E63946;
+}
+
+.upsell-added img {
+    opacity: 0.55;
+}
+
+/* Scrollbar del tema oscuro */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #0A0A0C;
+}
+::-webkit-scrollbar-thumb {
+    background: #DC143C;
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #E63946;
+}
+
+/* Respeta la preferencia de movimiento reducido del usuario */
+@media (prefers-reduced-motion: reduce) {
+    .slide-up,
+    .fade-in,
+    .animate-cart-bounce,
+    .animate-badge-pop,
+    .toast-in,
+    .upsell-pop,
+    .spinner {
+        animation: none !important;
+        transition: none !important;
+    }
+    .reveal-card,
+    .reveal-card.reveal-visible {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "nexo-print-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agente impresor para AsisNexo: hace polling de la cola de pedidos e imprime en ticketera térmica de red (JetDirect, puerto 9100) o en modo simulado.",
+  "bin": {
+    "nexo-agent": "agent.js"
+  },
+  "scripts": {
+    "start": "node agent.js",
+    "mock": "node agent.js"
+  }
+}

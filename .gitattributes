@@ -1,0 +1,15 @@
+* text=auto
+
+# Normalizar saltos de línea en archivos de texto
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+
+# Binarios (imágenes)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.svg text
